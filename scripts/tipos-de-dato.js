@@ -15,3 +15,18 @@ console.log(typeof null);
 console.log(typeof undefined);
 
 console.log(typeof FALSE);
+
+
+/* Ejercicios en clase */
+
+console.log("Hola Mundo");
+
+console.log(5);
+
+console.log(true);
+
+console.log( typeof "Hola Mundo");
+
+console.log( typeof 5);
+
+console.log( typeof true);

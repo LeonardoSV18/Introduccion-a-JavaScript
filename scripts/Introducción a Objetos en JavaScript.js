@@ -5,9 +5,9 @@ const auto = {
     mostrarInfo: function() {
       console.log(`Auto: ${this.marca} Modelo: ${this.modelo}, Año: ${this.año}`);
     }
-  };
+};
   
-  auto.mostrarInfo();
+auto.mostrarInfo();
 
 
 const libro = {
