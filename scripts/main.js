@@ -1,29 +1,31 @@
+const MessageForm = document.querySelector("#Message-Form");
 
-// const rangeContainer = document.querySelector('.range-container');
-// const inputRange = rangeContainer.children[0];
-const generateBtn = document.querySelector('.generator form button');
-
-
-const handleChange = () => {
-    const inputValue = inputRange.value;
-    const lengthCounter = document.querySelector('.range-container h1');
-    lengthCounter.textContent = inputValue;
-}
-const generatePassword = (passwordLength) => {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
-    for(let i = 0; i < passwordLength; i++){
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result
-}
-const printPassword = (event) => {
-    event.preventDefault();
-    const inputValue = inputRange.value;
-    const password = generatePassword(inputValue);
-    const passwordHeading = document.querySelector('.password-container h1');
-    passwordHeading.textContent = password;
+const handleUploadForm = (e) => {
+    e.preventDefault();
+    const UploadMessage = document.querySelector("#Message-Form input").value;
+    addMessage(UploadMessage);
 }
 
-inputRange.addEventListener('change', () => handleChange());
-generateBtn.addEventListener('click', (event) => printPassword(event));
+const addMessage = (text) => {
+    const container = document.querySelector(".CommentContainer");
+
+
+    container.insertAdjacentHTML('beforeend', `
+        <div class="CommentContainer">
+        <div class="MSN">
+            <h4>${text}</h4>
+            <button>Eliminar</button>
+        </div>
+    ` )
+
+    const MSNs = Array.from(document.querySelectorAll(".MSN"));
+    MSNs[MSNs.length - 1].children[1].addEventListener('click', (e) => deleteMSN(e));
+}
+
+const deleteMSN = (e) => {
+    const clickedElement = e.target;
+    clickedElement.parentElement.remove();
+
+}
+
+MessageForm.addEventListener('submit', (e) => handleUploadForm(e));
